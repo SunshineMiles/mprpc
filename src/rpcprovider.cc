@@ -7,6 +7,8 @@
 #include "rpcheader.pb.h"
 #include "logger.h"
 #include "zookeeperutil.h"
+
+
 // 这里是框架提供给外部使用的，可以发布rpc方法的函数接口
 // 基类可以接受所有派生类对象的指针。这是因为派生类对象包含了基类的部分或全部成员，因此可以将派生类的对象指针转换为基类指针。
 // 这种行为被称为向上转型（upcasting）。
@@ -123,6 +125,7 @@ void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr &conn,
         std::string service_name;
         std::string method_name;
         uint32_t args_size;
+
         if(rpcHeader.ParseFromString(rpc_header_str)){
             // 数据头反序列化成功
             service_name = rpcHeader.service_name();
@@ -181,8 +184,8 @@ void RpcProvider::OnMessage(const muduo::net::TcpConnectionPtr &conn,
         // 相当于UserService对象调用Login方法
         service->CallMethod(method,nullptr,request,response,done);
 
-
 }
+
 // Closure的回调操作，用于序列化rpc响应和网络发送
 void RpcProvider::SendRpcResponse(const muduo::net::TcpConnectionPtr &conn ,google::protobuf::Message* response){
     std::string response_str;

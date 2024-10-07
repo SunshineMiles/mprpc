@@ -10,7 +10,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <unistd.h>
-#include <errno.h>
+#include <errno.h>4
 #include "zookeeperutil.h"
 #include <arpa/inet.h>
 
@@ -146,7 +146,5 @@ void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method,
         return ;
     }
     close(clientfd);
-
-
 }
 

@@ -58,7 +58,4 @@ service UserServiceRpc{
     // 它指示了在定义的 Protocol Buffers 文件中存在一个 RPC 方法。这个声明告诉编译器生成与该 RPC 方法相关的代码，以便在客户端和服务器端进行使用。
     rpc Login(LoginRequest) returns (LoginResponse);
     rpc GetFriendLists(GetFriendListRequest) returns (GetFriendListResponse);
-
-
-
 }
